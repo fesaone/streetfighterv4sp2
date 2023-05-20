@@ -3,7 +3,7 @@ const image362 = document.getElementById('image362');
   let currentImage = 1;
 
   // Mengambil data dari file JSON
-  fetch('https://cdn.jsdelivr.net/gh/fesaone/streetfighterv4sp2@main/streetfighter.json')
+  fetch('https://cdn.jsdelivr.net/gh/fesaone/streetfighterv4sp2@main/black.json')
     .then(response => response.json())
     .then(data => {
       const images = data.images;
