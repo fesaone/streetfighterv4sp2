@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   }
 
-  fetchDataAndHandleEvents('visual1', 'https://cdn.jsdelivr.net/gh/fesaone/streetfighterv4sp2/streetfighterv4sp2black.json');
-  fetchDataAndHandleEvents('visual2', 'https://cdn.jsdelivr.net/gh/fesaone/streetfighterv4sp2/streetfighterv4sblack.json');
-  fetchDataAndHandleEvents('visual3', 'https://cdn.jsdelivr.net/gh/fesaone/streetfighterv4sp2/panigalev4r.json');
+  fetchDataAndHandleEvents('visual1', 'https://cdn.jsdelivr.net/gh/fesaone/streetfighterv4sp2@main/streetfighterv4sred.json');
+  fetchDataAndHandleEvents('visual2', 'https://cdn.jsdelivr.net/gh/fesaone/streetfighterv4sp2@main/streetfighterv4sblack.json');
+  fetchDataAndHandleEvents('visual3', 'https://cdn.jsdelivr.net/gh/fesaone/streetfighterv4sp2@main/streetfighterv4sp2black.json');
 });
