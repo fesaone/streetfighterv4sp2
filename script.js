@@ -1,59 +1,90 @@
-const image360 = document.getElementById('image360');
-  const totalImages = 48;
-  let currentImage = 1;
+var style = document.createElement('style');
+style.innerHTML = `
+[id^="visual"] {
+height: 0;
+padding-bottom: 66.67%;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+cursor: ew-resize;
+position: relative;
+filter: brightness(125%) contrast(90%) saturate(100%) blur(0px) hue-rotate(0deg);
+}
 
-  // Mengambil data dari file JSON
-  fetch('https://cdn.jsdelivr.net/gh/fesaone/streetfighterv4sp2@main/streetfighter.json')
-    .then(response => response.json())
-    .then(data => {
-      const images = data.images;
+@media (max-width: 767px) {
+[id^="visual"] {
+max-width: 100%;
+padding-bottom: 66.67%;
+}
+}
 
-      image360.style.backgroundImage = `url('${images[currentImage - 1]}')`;
+[id^="visual"] {
+padding: 31%;
+}
+`;
+document.head.appendChild(style);
 
-      let isMouseDown = false;
-      let startX;
+function fetchDataAndHandleEvents(elementId, jsonUrl) {
+const element = document.getElementById(elementId);
+const totalImages = 48;
+let currentImage = 1;
 
-      function updateImage() {
-          image360.style.backgroundImage = `url('${images[currentImage - 1]}')`;
-      }
+fetch(jsonUrl)
+.then(response => response.json())
+.then(data => {
+const images = data.images;
 
-      function handleStart(e) {
-          isMouseDown = true;
-          startX = e.clientX || e.touches[0].clientX;
-      }
+element.style.backgroundImage = `url('${images[currentImage - 1]}')`;
 
-      function handleMove(e) {
-          if (!isMouseDown) return;
+let isMouseDown = false;
+let startX;
 
-          const x = e.clientX || e.touches[0].clientX;
-          const dx = x - startX;
-          if (Math.abs(dx) > 5) {
-              if (dx < 0) {
-                  currentImage++;
-                  if (currentImage > totalImages) currentImage = 1;
-              } else {
-                  currentImage--;
-                  if (currentImage < 1) currentImage = totalImages;
-              }
+function updateImage() {
+element.style.backgroundImage = `url('${images[currentImage - 1]}')`;
+}
 
-              updateImage();
-              startX = x;
-          }
-      }
+function handleStart(e) {
+isMouseDown = true;
+startX = e.clientX || e.touches[0].clientX;
+}
 
-      function handleEnd() {
-          isMouseDown = false;
-      }
+function handleMove(e) {
+if (!isMouseDown) return;
 
-      image360.addEventListener('mousedown', handleStart);
-      image360.addEventListener('mousemove', handleMove);
-      image360.addEventListener('mouseup', handleEnd);
-      image360.addEventListener('mouseleave', handleEnd);
+const x = e.clientX || e.touches[0].clientX;
+const dx = x - startX;
+if (Math.abs(dx) > 5) {
+if (dx < 0) {
+currentImage++;
+if (currentImage > totalImages) currentImage = 1;
+} else {
+currentImage--;
+if (currentImage < 1) currentImage = totalImages;
+}
 
-      image360.addEventListener('touchstart', handleStart);
-      image360.addEventListener('touchmove', handleMove);
-      image360.addEventListener('touchend', handleEnd);
-    })
-    .catch(error => {
-      console.error('Terjadi kesalahan dalam mengambil data JSON:', error);
-    });
+updateImage();
+startX = x;
+}
+}
+
+function handleEnd() {
+isMouseDown = false;
+}
+
+element.addEventListener('mousedown', handleStart);
+element.addEventListener('mousemove', handleMove);
+element.addEventListener('mouseup', handleEnd);
+element.addEventListener('mouseleave', handleEnd);
+
+element.addEventListener('touchstart', handleStart);
+element.addEventListener('touchmove', handleMove);
+element.addEventListener('touchend', handleEnd);
+})
+.catch(error => {
+console.error(`Terjadi kesalahan dalam mengambil data JSON (${elementId}):`, error);
+});
+}
+
+fetchDataAndHandleEvents('visual1', 'https://cdn.jsdelivr.net/gh/fesaone/streetfighterv4sp2@main/streetfighter.json');
+fetchDataAndHandleEvents('visual2', 'https://cdn.jsdelivr.net/gh/fesaone/streetfighterv4sp2/black.json');
+fetchDataAndHandleEvents('visual3', 'https://cdn.jsdelivr.net/gh/fesaone/fesaone360/fesaimages.json');
