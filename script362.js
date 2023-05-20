@@ -1,5 +1,5 @@
 const image362 = document.getElementById('image362');
-  const totalImages = 48;
+  const totalImages362 = 48;
   let currentImage = 1;
 
   // Mengambil data dari file JSON
