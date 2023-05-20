@@ -85,6 +85,6 @@ console.error(`Terjadi kesalahan dalam mengambil data JSON (${elementId}):`, err
 });
 }
 
-fetchDataAndHandleEvents('visual1', 'https://cdn.jsdelivr.net/gh/fesaone/streetfighterv4sp2@main/streetfighter.json');
-fetchDataAndHandleEvents('visual2', 'https://cdn.jsdelivr.net/gh/fesaone/streetfighterv4sp2/black.json');
-fetchDataAndHandleEvents('visual3', 'https://cdn.jsdelivr.net/gh/fesaone/fesaone360/fesaimages.json');
+fetchDataAndHandleEvents('visual1', 'https://cdn.jsdelivr.net/gh/fesaone/streetfighterv4sp2/streetfighterv4sp2black.json');
+fetchDataAndHandleEvents('visual2', 'https://cdn.jsdelivr.net/gh/fesaone/streetfighterv4sp2/streetfighterv4sblack.json');
+fetchDataAndHandleEvents('visual3', 'https://cdn.jsdelivr.net/gh/fesaone/streetfighterv4sp2/panigalev4r.json');
